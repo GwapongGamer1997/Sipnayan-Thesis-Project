@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 02b7ad2c8438d98428a3b5551267e5de
+timeCreated: 1511834101
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: AlexDirte Brush Font
+  fontNames:
+  - AlexDirte Brush Font
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 013ee1c239961074183896c6079c1b6c, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
