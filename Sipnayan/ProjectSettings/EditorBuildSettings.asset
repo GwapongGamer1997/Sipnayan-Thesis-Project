@@ -11,3 +11,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main Menu Scene.unity
     guid: e845b2a29a684ba4fa34ea17f265a69c
+  - enabled: 1
+    path: Assets/Scenes/games/category.unity
+    guid: c943ae762a6b91f4b9fffe354c966483
+  - enabled: 1
+    path: Assets/Scenes/games/Guess the number 1.unity
+    guid: 8243700c11a0b8e409728057c6cb371a
+  - enabled: 1
+    path: Assets/Scenes/games/multiplechoice.unity
+    guid: 040a16179e3c7084797f7f1e96e43e07
+  - enabled: 1
+    path: Assets/Scenes/games/TrueorFalse.unity
+    guid: 47a6dbbcf75c8d84da4cd169f37e1c38

@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/games/multiplechoice.unity
+- path: Assets/Scenes/grade1/numbers 6-10.unity
   isLoaded: 1
   isActive: 1
