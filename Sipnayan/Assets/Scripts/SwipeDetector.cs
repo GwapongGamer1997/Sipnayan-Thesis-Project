@@ -4,10 +4,9 @@ using UnityEngine.UI;
 
 public class SwipeDetector : MonoBehaviour
 {
-    public float minSwipeDistY;
-    public float minSwipeDistX;
+    private float minSwipeDistY;
+    private float minSwipeDistX;
     public Animator anim1;
-    public Animator anim2;
     public Vector2 startPos;
 
     public void Update()
@@ -35,13 +34,11 @@ public class SwipeDetector : MonoBehaviour
                             if (swipeValueX > 0)//right swipe
                             {
                                 anim1.SetBool("IsDisplayed", true);
-                                anim2.SetBool("IsDisplayed", true);
                             }
 
                             else if (swipeValueX < 0)//left swipe
                             {
                                 anim1.SetBool("IsDisplayed", false);
-                                anim2.SetBool("IsDisplayed", false);
                             }
                         }
                     }

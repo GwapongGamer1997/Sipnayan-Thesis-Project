@@ -4,13 +4,19 @@ using UnityEngine;
 
 public class TabSliderScript : MonoBehaviour
 {
-    public void DisableBoolAnimator(Animator anim)
-    {
-        anim.SetBool("IsDisplayed", false);
-    }
+    private bool tabChecker;
 
     public void EnableBoolAnimator(Animator anim)
     {
-        anim.SetBool("IsDisplayed", true);
+        if (tabChecker == false)
+        {
+            anim.SetBool("IsDisplayed", true);
+            tabChecker = true;
+        }
+        else
+        {
+            anim.SetBool("IsDisplayed", false);
+            tabChecker = false;
+        }
     }
 }
