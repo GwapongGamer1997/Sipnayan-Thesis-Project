@@ -11,15 +11,18 @@ using UnityEngine.SceneManagement;
 public class UsersScript : MonoBehaviour
 {
     private db_controller _dbctrl = new db_controller();
+    private NextSceneScript nextScene = new NextSceneScript();
+    private EnableAndDisableScript enableAndDisableScript = new EnableAndDisableScript();
     private SqliteDataReader dataread;
     private string query;
     private string querycheck;
+    private string queryget;
 
     public InputField firstNameInput;
     public InputField middleNameInput;
     public InputField lastNameInput;
     public Text text;
-    public String nextScene;
+    public GameObject gameObject;
 
     private string fName;
     private string mName;
@@ -29,11 +32,6 @@ public class UsersScript : MonoBehaviour
     {
         get;
         private set;
-    }
-
-    private void ChangeToScene(string nextScene)
-    {
-        SceneManager.LoadScene(nextScene);
     }
 
     // Use this for initialization
@@ -52,7 +50,7 @@ public class UsersScript : MonoBehaviour
             {
                 Userid = dataread[0].ToString();
                 //Application.LoadLevel(scene);
-                ChangeToScene(nextScene);
+                nextScene.ChangeToScene("Main Menu Scene");
             }
             _dbctrl.DisconnectDB(_dbctrl.con_db, _dbctrl.rdr, _dbctrl.cmd_db);
         }
@@ -72,6 +70,7 @@ public class UsersScript : MonoBehaviour
 
         query = "INSERT into Users (firstName, middleName, lastName) values ('" + fName + "','" + mName + "', '" + lName + "')";
         querycheck = "SELECT user_id from Users where firstName = '" + fName + "' AND middleName = '" + mName + "' AND lastName = '" + lName + "'";
+        queryget = "SELECT * FROM Users ORDER BY user_id DESC LIMIT 1";
 
         if (fName != "" && mName != "" && lName != "")
         {
@@ -80,7 +79,12 @@ public class UsersScript : MonoBehaviour
             {
                 _dbctrl.UpdateData(query);
                 _dbctrl.DisconnectDB(_dbctrl.con_db, _dbctrl.rdr, _dbctrl.cmd_db);
-                ChangeToScene(nextScene);
+
+                dataread = _dbctrl.ExecuteReader(queryget);
+                Userid = dataread[0].ToString();
+                _dbctrl.DisconnectDB(_dbctrl.con_db, _dbctrl.rdr, _dbctrl.cmd_db);
+
+                nextScene.ChangeToScene("Main Menu Scene");
             }
 
             else
@@ -102,6 +106,21 @@ public class UsersScript : MonoBehaviour
         else
         {
             text.text = "Please put your Last Name.";
+        }
+    }
+
+    void Start()
+    {
+        query = "SELECT * FROM Users ORDER BY user_id DESC LIMIT 1";
+        dataread = _dbctrl.ExecuteReader(query);
+
+        if (dataread.FieldCount > 0)
+        {
+            gameObject.SetActive(true);
+
+            text.text = dataread[1].ToString();
+            Userid = dataread[0].ToString();
+            _dbctrl.DisconnectDB(_dbctrl.con_db, _dbctrl.rdr, _dbctrl.cmd_db);
         }
     }
 }

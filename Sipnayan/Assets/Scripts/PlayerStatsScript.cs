@@ -11,7 +11,7 @@ public class PlayerStatsScript : MonoBehaviour
     public SqliteDataReader dr;
     private db_controller db = new db_controller();
     //public Text user_id;
-    //public Text fName;
+    public Text fName;
     //public Text mName;
     //public Text lName;
     //public Text stats_id;
@@ -28,13 +28,13 @@ public class PlayerStatsScript : MonoBehaviour
             while (dr.Read())
             {
                 //user_id.text = dr[0].ToString();
-                //fName.text = dr[1].ToString();
+                fName.text = dr[1].ToString();
                 //mName.text = dr[2].ToString();
                 //lName.text = dr[3].ToString();
                 //stats_id.text = dr[4].ToString();
-                quiz1.text = dr[5].ToString();
-                quiz2.text = dr[6].ToString();
-                quiz3.text = dr[7].ToString();
+                //quiz1.text = dr[5].ToString();
+                //quiz2.text = dr[6].ToString();
+                //quiz3.text = dr[7].ToString();
             }
         }
     }
