@@ -51,38 +51,32 @@ public class db_controller : MonoBehaviour
     public SqliteDataReader ExecuteReader(string query)
     {
         ConnectDB();
-        try
-        {
-            cmd_db = new SqliteCommand(query, con_db);
-            rdr = cmd_db.ExecuteReader();
-            if (rdr.HasRows)
-            {
-                return rdr;
-            }
-            else
-            {
-                return null;
-            }
-        }
 
-        catch (Exception ex)
+        cmd_db = new SqliteCommand(query, con_db);
+        rdr = cmd_db.ExecuteReader();
+
+        if (rdr.HasRows)
+        {
+            return rdr;
+        }
+        else
         {
             return null;
         }
-    }
+}
 
     public void UpdateData(string query)
     {
         ConnectDB();
+
         try
         {
             cmd_db = new SqliteCommand(query, con_db);
             cmd_db.ExecuteNonQuery();
         }
-
         catch (Exception ex)
         {
-            print(ex.ToString());
+            print(ex);
         }
     }
 }

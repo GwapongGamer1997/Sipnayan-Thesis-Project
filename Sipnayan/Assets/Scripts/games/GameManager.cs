@@ -8,9 +8,12 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour {
 
 	public Question[] questions;
+
 	private static List<Question> unansweredQuestions;
 
 	private Question currentQuestion;
+
+
 
 	[SerializeField]  
 	private Text factText;
@@ -30,12 +33,15 @@ public class GameManager : MonoBehaviour {
 	private float timeBetweenQuestions;
 	void Start ()
 	{
+		
+
 		if (unansweredQuestions == null || unansweredQuestions.Count == 0)
 		{
 			unansweredQuestions = questions.ToList<Question> ();
 		}
 			 
 		SetCurrentQuestion (); 
+
 	
 	}
 	void SetCurrentQuestion ()
@@ -48,11 +54,14 @@ public class GameManager : MonoBehaviour {
 		if (currentQuestion.isTrue) {
 			TrueAnswerText.text = "Your Right";
 			FalseAnswerText.text = "Your Wrong";
+
+
 		} else
 		{
 			TrueAnswerText.text = "Your Wrong";
 			FalseAnswerText.text = "Your Right";
 		}
+
 	}
 
 	IEnumerator TransitionoNextQuestion()
@@ -65,10 +74,11 @@ public class GameManager : MonoBehaviour {
 
 	public void UserSelectTrue()
 	{
+		
 		animator.SetTrigger ("True");
 		if (currentQuestion.isTrue) 
 		{
-			
+
 		} else
 		{
 			
@@ -81,7 +91,7 @@ public class GameManager : MonoBehaviour {
 		animator.SetTrigger ("False");
 		if (!currentQuestion.isTrue) 
 		{
-			
+
 		} else
 		{
 			

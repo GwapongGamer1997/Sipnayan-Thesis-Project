@@ -5,13 +5,15 @@ using UnityEngine.UI;
 
 public class EnableAndDisableScript : MonoBehaviour
 {
-    public GameObject gameObject;
-
-    public void enableObject()
+    public void enableObject(GameObject gameObject)
     {
         if (!gameObject.active)
         {
             gameObject.SetActive(true);
+        }
+        else
+        {
+            gameObject.SetActive(false);
         }
     }
 }
